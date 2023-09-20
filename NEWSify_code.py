@@ -1,11 +1,15 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def bot(a):
 	print(f"NewsBot : {a}\n********************")
 	
 def getNews():
 	
-	apiKey="47210e6079774767bc1b221dece64917"
+	apiKey=f"{os.getenv('NEWSIFYAPIKEY')}"
 	
 	while True:
 		q=input("USER : ")

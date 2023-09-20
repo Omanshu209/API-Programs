@@ -1,10 +1,14 @@
 from requests import get
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 print("Welcome to City Weather Reporter ! ")
 
 def Location(city_name):
 	
-	apiKey="d60918d6f3604a6c9e9134244230403"
+	apiKey=f"{os.getenv('CITYWEATHERAPIKEY')}"
 	url = f"https://api.weatherapi.com/v1/current.json?key={apiKey}&q={city_name}&aqi=no"
 	responce = get(url).json()
 	

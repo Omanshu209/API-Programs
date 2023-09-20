@@ -1,10 +1,14 @@
 from requests import get
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #function to get the current train details by PNR
 def getData(pnr):
 	URL = f"https://pnr-status-indian-railway.p.rapidapi.com/pnr-check/{pnr}"
 	HEADERS = {
-		"X-RapidAPI-Key": "feaaad2b53msh311ff44e1515795p1f08abjsn48bdf7d48c68",
+		"X-RapidAPI-Key": f"{os.getenv('TRAINPNRAPIKEY')}",
 		"X-RapidAPI-Host": "pnr-status-indian-railway.p.rapidapi.com"
 	}
 	RESPONCE = get(URL, headers = HEADERS)
